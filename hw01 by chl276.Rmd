@@ -21,6 +21,7 @@ knitr::opts_chunk$set(
 install.packages('https://cran.r-project.org/src/contrib/Archive/nutshell/nutshell_1.02.tar.gz',repo=NULL, type="source")
 library(knitr)
 library(nutshell)
+library(lattice)
 data(births2006.smpl)
 
 ```
