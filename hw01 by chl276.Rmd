@@ -1,0 +1,42 @@
+---
+title: "hw01bychl276"
+author: bobby chl276@pitt.edu
+output: html_document
+
+---
+```{r document_setup, echo=F, message=F, warning=F}
+# This chunk can include things you need for the rest of the document
+library('ggplot2') ## most of the time you will need ggplot
+theme_set(theme_bw()) # change the default ggplot theme to black-and-white
+knitr::opts_chunk$set(
+  echo=T, ## show your R code chunk
+  message = F, ## hide the message
+  warning = F, ## hide the warning
+  autodep = T ## make sure your separate code chunks can find the dependencies (from other code chunk)
+)
+```
+
+```{r}
+
+install.packages('https://cran.r-project.org/src/contrib/Archive/nutshell/nutshell_1.02.tar.gz',repo=NULL, type="source")
+library(knitr)
+library(nutshell)
+data(births2006.smpl)
+
+```
+
+# 2. Histogram plots for number of total/C-section/Vaginal instances over the days of week
+
+```{r}
+dob.dm.method <- table(week=births2006.smpl$DOB_WK,method = births2006.smpl$DMETH_REC)
+dob.dm.method
+barchart(dob.dm.method,horizontal=FALSE,groups=FALSE,xlab="Day of Week",ylab="Total instances", col="black")
+
+```
+
+# 3. Density plot of baby weights in singletons, twins and triplets
+
+```{r}
+densityplot(~DBWT|DPLURAL,data=births2006.smpl,layout=c(1,5),plot.points=FALSE,col="black")
+
+```
